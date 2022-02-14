@@ -62,9 +62,9 @@ class Simulation():
             for t in bar:
                 start = tt.time()
                 if t < self.t_w:
-                    self.H[0][60, self.siy] = 10e3 * math.sin(2 * self.f * math.pi * t)
+                    self.H[0][self.six, self.siy] = 10e3 * math.sin(2 * self.f * math.pi * t)
                 else:
-                    self.E[0][5, self.siy] = 0
+                    self.E[0][self.six, self.siy] = 0
 
                 plt.close()
 
@@ -89,8 +89,11 @@ class Simulation():
                         if (i > self.sizex / 2 and i < 2 + self.sizex / 2 and (j > 150 and j < 140)):
                             self.H[0][i, j] = 0
                 Z = self.H[0]
-                plt.imshow(Z, interpolation="lanczos", cmap="gray")
-                plt.savefig('results/wyk%r.png' % str(t))
+                plt.imshow(Z, interpolation="lanczos", cmap="gray", vmin=-2e3,vmax=2e3)
+                ind = str(t)
+                while len(str(self.n))>len(str(ind)):
+                    ind = "0" + ind
+                plt.savefig(f'results/img_{ind}.png')
                 stop = tt.time()
                 sumt = (self.n - t + 1) * (stop - start) / 60
                 self.st += (stop - start) / 60

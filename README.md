@@ -1,4 +1,7 @@
 # Yee-algorithm
-Numerical solution of Maxwell equations for monochromatic light in cuboid environment with given magnetic and electric permeability using 3D Yee-net algorithm.
 
-![x](examples/yee.gif)
+Numerical solution of Maxwell equations for monochromatic light using 2D Yee-net algorithm.
+
+## Examples
+
+![A](examples/A.mp4)
