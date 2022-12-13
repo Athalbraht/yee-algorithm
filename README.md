@@ -7,13 +7,14 @@ Numerical solution of Maxwell equations for monochromatic light using 2D Yee-net
 ## Usage
 
 ```console
+$: pip install -r requirements.txt
 $: python3 fdtd.py #init params in fdtd.config
 ```
 
-You can convert generated images from `result/` folder to:
+You can convert generated images from `result/` folder to (`%04d` refers to the simulation `len(str(simulation_time))`):
 
 ```console
-$: ffmpeg -i img_%o4d.png output.mp4 #MP4
+$: ffmpeg -i img_%04d.png output.mp4 #MP4
 $: ffmpeg -y -i output.mp4 -filter_complex "fps=5,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=32[p];[s1][p]paletteuse=dither=bayer" output.gif #GIF
 ```
 
